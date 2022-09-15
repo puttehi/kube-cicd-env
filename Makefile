@@ -10,6 +10,12 @@ deps:
 dashboard:
 	minikube dashboard
 
+deploy-webapp:
+	make -C ./sample-webapp/ deploy-local
+
+destroy-webapp:
+	make -C ./sample-webapp/ destroy-local
+
 hello-world:
 	@echo "run: source use-minictl.sh"
 	@echo "run: make start"
