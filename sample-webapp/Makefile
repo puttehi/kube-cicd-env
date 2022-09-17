@@ -2,6 +2,12 @@ SHELL:=/usr/bin/bash
 
 LOCAL_IP=$(echo $(minikube ip))
 
+publish: build
+	docker push puttehi/react-docker
+
+build: docker-login-local
+	npm run package
+
 deploy-local: create-ns-local docker-login-local kustomize
 	minikube kubectl -- apply -f compiled.yaml
 	minikube kubectl -- get deployment
