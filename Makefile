@@ -24,6 +24,9 @@ argocd-install:
 argocd-connect:
 	minikube kubectl -- port-forward svc/argocd-server -n argocd 8080:443
 
+argocd-create-react-app:
+	argocd app create react-app --file ./sample-webapp/app.yaml --upsert
+
 deploy-webapp:
 	make -C ./sample-webapp/ deploy-local
 

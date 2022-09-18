@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: react-app
+spec:
+  destination:
+    name: ''
+    namespace: react-docker
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: sample-webapp
+    repoURL: 'git@github.com:puttehi/kube-cicd-env'
+    targetRevision: main
+    kustomize:
+      namePrefix: dev-
+      nameSuffix: -1-2-3
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions: []
+
