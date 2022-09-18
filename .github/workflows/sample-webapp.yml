@@ -1,0 +1,14 @@
+name: When pushing to main, build sample-webapp and publish it
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      working-directory: ./sample-webapp
+      run: make publish
